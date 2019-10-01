@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Phystool</string>
+    <string name="contact_info_button_text">Contact Us</string>
+    <string name="plus_button_text">+</string>
+    <string name="map_button_text">Map</string>
+
+    <!-- contactInfoActivity strings -->
+    <string name="call_us_button_text">Call Us</string>
+    <string name="email_us_button_text">Email Us</string>
+    <string name="visit_web_button_text">Visit Our Website</string>
+    <string name="address_text">508 E. Pioneer Ave. Montesano, WA 98563</string>
+    <string name="contact_us_image_desc">Picture of the owner of Montesano Physical Therapy, Joe Arndt, standing in front of a sign at his clinic.</string>
+
+    <!-- important data -->
+    <string name="clinic_phone_number">3602494185</string>
+    <string name="clinic_email">info@montesanopt.com</string>
+    <string name="clinic_website">http://www.montesanopt.com</string>
+</resources>
