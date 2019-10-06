@@ -119,12 +119,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // create observer for the list of exercises which will set the image of the button to the first selected exercise
+        // in the routine whenever the routine is changed.
         viewModel.getSelected().observe(this, new Observer<List<Exercise>>() {
             @Override
             public void onChanged(List<Exercise> exercises) {
                 if (exercises != null) {
                     Context context = getApplicationContext();
-                    Drawable img = ContextCompat.getDrawable(context, context.getResources().getIdentifier(exercises.get(0).getImage(), "drawable", context.getPackageName()));
+                    Drawable img = ContextCompat.getDrawable(context, R.drawable.lunge);
+                    if (exercises.size() != 0) {
+                        img = ContextCompat.getDrawable(context, context.getResources().getIdentifier(exercises.get(0).getImage(), "drawable", context.getPackageName()));
+                    }
                     button.setImageDrawable(img);
                 }
             }
