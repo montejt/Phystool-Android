@@ -26,10 +26,10 @@ public class SelectedExercisesRecyclerAdapter extends RecyclerView.Adapter<Selec
     private final LayoutInflater mInflater;
     private List<Exercise> mExercises;
     private ExerciseViewModel mViewModel;
-    private DeselectUpdateList mUpdateList; // keeps track of changed exercises which will need
+    private UpdateList mUpdateList; // keeps track of changed exercises which will need
     // to be updated in the database
 
-    public SelectedExercisesRecyclerAdapter(Context context, ExerciseViewModel model, DeselectUpdateList updateList) {
+    public SelectedExercisesRecyclerAdapter(Context context, ExerciseViewModel model, UpdateList updateList) {
         mInflater = LayoutInflater.from(context);
         mContext = context;
         mViewModel = model;
@@ -77,7 +77,7 @@ public class SelectedExercisesRecyclerAdapter extends RecyclerView.Adapter<Selec
 
         // add all of the updated Exercises to the updateList
         for (Exercise e : updatedExercises) {
-            mUpdateList.add(e);
+            mUpdateList.updateOrder(e);
         }
 
         // notify the recycler view that an item has moved
@@ -93,7 +93,7 @@ public class SelectedExercisesRecyclerAdapter extends RecyclerView.Adapter<Selec
         Exercise target = mExercises.get(position);
         Exercise updatedTarget = new Exercise(target);
         updatedTarget.setOrder(0);
-        mUpdateList.add(updatedTarget);
+        mUpdateList.updateOrder(updatedTarget);
         mExercises.remove(target);
 
         // notify the adapter that we removed the exercise
@@ -154,7 +154,7 @@ public class SelectedExercisesRecyclerAdapter extends RecyclerView.Adapter<Selec
                         number = "0";
                     }
                     newExercise.setNumReps(Integer.parseInt(number));
-                    mUpdateList.add(newExercise);
+                    mUpdateList.updateNumReps(newExercise);
 
                     // set the numreps for curr in the cached list as well
                     curr.setNumReps(newExercise.getNumReps());

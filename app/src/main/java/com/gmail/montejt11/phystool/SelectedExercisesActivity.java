@@ -14,7 +14,7 @@ import java.util.List;
 public class SelectedExercisesActivity extends AppCompatActivity {
 
     private ExerciseViewModel mViewModel;
-    private DeselectUpdateList mUpdateList;
+    private UpdateList mUpdateList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class SelectedExercisesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_routine);
 
         mViewModel = ViewModelProviders.of(this).get(ExerciseViewModel.class);
-        mUpdateList = new DeselectUpdateList(mViewModel);
+        mUpdateList = new UpdateList(mViewModel);
 
         RecyclerView recyclerView = findViewById(R.id.SelectedExercisesRecycleView);
         final SelectedExercisesRecyclerAdapter adapter = new SelectedExercisesRecyclerAdapter(this, mViewModel, mUpdateList);

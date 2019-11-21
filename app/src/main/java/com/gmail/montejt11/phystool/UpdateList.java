@@ -26,12 +26,26 @@ public class UpdateList {
         mExerciseMap.clear();
     }
 
-    // add the given exercise to the map. Will replace any older entries
+    // add the given exercise to the map. Will replace any older entries.
     void add(Exercise e) {
-        // if the order is 0, just remove the old one from the map since we no longer
-        // need to update it
-        if (e.getOrder() == 0) {
-            mExerciseMap.remove(e.getName());
+        mExerciseMap.put(e.getName(), e);
+    }
+
+    // update numReps of given exercise
+    void updateNumReps(Exercise e) {
+        if (mExerciseMap.containsKey(e.getName())) {
+            Exercise old = mExerciseMap.get(e.getName());
+            old.setNumReps(e.getNumReps());
+        } else {
+            mExerciseMap.put(e.getName(), e);
+        }
+    }
+
+    // update order of given exercise
+    void updateOrder(Exercise e) {
+        if (mExerciseMap.containsKey(e.getName())) {
+            Exercise old = mExerciseMap.get(e.getName());
+            old.setOrder(e.getOrder());
         } else {
             mExerciseMap.put(e.getName(), e);
         }
